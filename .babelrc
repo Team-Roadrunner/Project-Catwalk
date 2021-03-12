@@ -1,8 +1,13 @@
 {
-  "presets": ["@babel/preset-react", "@babel/preset-env"],
-  "env": {
-    "development": {
-      "presets": [["@babel/preset-react"]]
-    }
-  }
+  "presets": [
+    [
+      "@babel/preset-env",
+      {
+        "targets": {
+          "node": "10"
+        }
+      }
+    ],
+    "@babel/preset-react"
+  ]
 }

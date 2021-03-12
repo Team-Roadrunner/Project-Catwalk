@@ -1,18 +1,11 @@
 import App from '../react-client/src/components/App';
+import Overview from '../react-client/src/components/product-overview/Overview.jsx';
+import app from './server';
 import React from 'react';
-import Enzyme, { shallow, render, mount } from 'enzyme';
-import Adapter from 'enzyme-adapter-react-15';
+import { render, fireEvent, waitFor, screen } from '@testing-library/react'
+import '@testing-library/jest-dom/extend-expect';
 
-
-Enzyme.configure({ adapter: new Adapter() });
-
-it('works', () => {
-  const wrap = shallow(
-    <App />
-  )
-  expect(
-    wrap.containsMatchingElement(
-      <div>React</div>
-    )
-  ).toBeTruthy()
+test('renders a message', () => {
+  const { container, getByText } = render(<Overview product={{id: 16060}}/>)
+  expect(getByText('Heir')).toBeInTheDocument();
 })
