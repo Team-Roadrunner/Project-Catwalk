@@ -25,7 +25,7 @@ const AnswerModals = (props) => {
         uploadImageAsPromise(imageFile);
       }
     } else {
-      axios.post(`/api/qa/questions/${id}/answers`, {
+      axios.post(`/api/qa/api/qa/questions/${id}/answers`, {
         body: answer,
         name: nickname,
         email,
@@ -70,7 +70,7 @@ const AnswerModals = (props) => {
               empty.push(downloadURL)
               console.log('File available at', downloadURL);
                 if(empty.length === photos.length) {
-                axios.post(`/api/qa/questions/${props.question.question_id}/answers`,{
+                axios.post(`/api/qa/api/qa/questions/${props.question.question_id}/answers`,{
                   body: answer,
                   name: nickname,
                   email: email,

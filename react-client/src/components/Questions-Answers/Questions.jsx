@@ -27,8 +27,9 @@ const Questions = (props) => {
   let getQuestions = () => {
     if (props.currentProduct.id) {
       const id = props.currentProduct.id
-      axios.get(`/api/qa/questions?product_id=${id}&count=100`)
+      axios.get(`/api/qa/api/qa/questions/${id}`)
         .then((question) => {
+          console.log(question.data.results)
           setQuestions(question.data.results);
         });
     }
@@ -37,7 +38,7 @@ const Questions = (props) => {
   const increaseHelpfulness = (question) => {
     const id = question.question_id;
     setHelpfulClicked(prevArray=> [...prevArray, id]);
-    axios.put(`/api/qa/questions/${id}/helpful`, null)
+    axios.put(`/api/qa/api/qa/questions/${id}/helpful`, null)
       .then(() => { getQuestions(); })
       .catch((err) => { console.log(err); });
   };
@@ -45,7 +46,7 @@ const Questions = (props) => {
   const reportQuestion = (question) => {
     const id = question.question_id;
     setReport(prevArray=> [...prevArray, id]);
-    axios.put(`/api/qa/questions/${id}/report`, null)
+    axios.put(`/api/qa/api/qa/questions/${id}/report`, null)
       .then(() => { console.log('success') })
       .catch((err) => { console.log(err); });
   };
@@ -137,7 +138,7 @@ const Questions = (props) => {
   };
   return (
     <div>
-      {questions.length > 0
+      {questions && questions.length > 0
         ? (
           <div widgetname="QA" >
             <h1 widgetname="QA" className="QATitle">QUESTIONS & ANSWERS</h1>

@@ -14,8 +14,9 @@ const QuestionModals = (props) => {
 
   }, []);
   const addQuestions = () => {
+    console.log("hi")
     addClicked(!addClick);
-    axios.post('/api/qa/questions', {
+    axios.post('/api/qa/api/qa/questions', {
       body: question,
       name: nickname,
       email,
